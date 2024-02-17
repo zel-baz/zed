@@ -1,0 +1,2 @@
+# zed
+Simple info page
