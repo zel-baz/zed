@@ -1,4 +1,4 @@
 # zed
 Simple info page
 # link:
-https://zouhairelbaz.github.io/zed/
+[View](https://zel-baz.github.io/zed/)
