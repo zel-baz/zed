@@ -1,4 +1,4 @@
 # zed
 Info Page
 # link
-{Visit}(https://zel-baz.github.io/zed)
+[Click to open](https://zel-baz.github.io/zed)
