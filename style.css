@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --success-color: #28a745;
-    --info-color: #17a2b8;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
-    --light-color: #fcfcfc;
-    --dark-color: #343a40;
-    --body-bg: #f6f8f9;
-    --body-color: #212529;
-    --border-color: #dee2e6;
+    --main-color: #007bff;
+    --body-color-light: #f3f4f6;
+    --body-color-dark: #121c2b;
+    --box-color-light: #ffffff;
+    --box-color-dark: #182232;
+    --text-color-light: #1e1f21;
+    --text-color-light-secondary: #6c757d;
+    --text-color-dark: #fcfcfc;
+    --text-color-dark-secondary: #b0b0b0;
+    --border-light: 1px solid #e1e1e1;
+    --border-dark: 1px solid #212d40;
     --border-radius: 8px;
     --transition: all 0.3s ease;
 }
@@ -28,11 +28,11 @@ body {
     font-family: "Work Sans", serif;
     font-optical-sizing: auto;
     font-style: normal;
-    background-color: var(--body-bg);
+    background-color: var(--body-color-light);
 }
 body.dark {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+    background-color: var(--body-color-dark);
+    color: var(--text-color-dark);
 }
 .container {
     width: 100%;
@@ -66,19 +66,15 @@ body.dark {
     }
 }
 
-
-
-
 /* Header */
 .website-header {
     position: relative;
-    background-color: var(--light-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;    
+    background-color: var(--box-color-light);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-dark);
 }
 body.dark .website-header {
-    background-color: var(--dark-color);
-    background-color: #495057;
+    background-color: var(--box-color-dark);
 }
 .website-header .container {
     display: flex;
@@ -89,157 +85,514 @@ body.dark .website-header {
 .website-header .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--main-color);
 }
 body.dark .website-header .logo {
-    color: var(--light-color);
+    color: var(--text-color-dark);
 }
 .website-header .theme {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    background-color: var(--body-bg);
-    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     position: relative;
-}
-body.dark .website-header .theme {
-    background-color: var(--dark-color);
-    border-color: var(--dark-color);
 }
 .website-header .theme .icon {
     display: flex;
     cursor: pointer;
     width: 40px;
     height: 40px;
-    font-size: 1.5rem;
+    font-size: 1.2em;
     align-items: center;
     justify-content: center;
-    background-color: var(--body-bg);
-    color: var(--secondary-color);
+    background-color: var(--body-color-light);
+    border-radius: var(--border-radius);
+    color: var(--text-color-light);
 }
 body.dark .website-header .theme .icon {
-    background-color: var(--dark-color);
-    color: var(--border-color);
+    background-color: var(--body-color-dark);
+    color: var(--body-color-light);
 }
-.website-header .theme .icon.active {
-    color: var(--dark-color);
-}
-.website-header .theme .icon.active i {
-    color: var(--light-color);
+.website-header .theme .icon.active,
+body.dark .website-header .theme .icon.active {
+    color: var(--main-color);
 }
 
-
-
-
-
-
-
-
-
-
-
-/* Main */
-.main {
+/* app */
+.app {
     position: relative;
 }
-.main .container {
-    display: flex;
-    justify-content: center;
+.app .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
 }
-/* Card */
-/* Header */
-.main .card {
-    background-color: var(--light-color);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    padding-bottom: 0;
-    width: 100%;
-    max-width: 400px;
+.app .container .card.left {
+    padding: 10px;
+    border-radius: 8px;
+    align-self: start;
 }
-body.dark .main .card {
-    background-color: #404850;
-    border-color: var(--dark-color);
+body.dark .app .container .card {
+    background-color: var(--box-color-dark) !important;
+    border: var(--border-dark) !important;
 }
-.main .card .card-header {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 10px;
-    align-items: center;
-}
-.main .card .card-header .avatar {
-    width: 100px;
-    height: 100px;
+.app .container .card.left .image {
+    width: 80px;
+    height: 80px;
+    background-color: var(--text-color-light);
     border-radius: 50%;
+    margin: 10px auto;
     overflow: hidden;
 }
-.main .card .card-header .name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark-color);
+.app .container .card.left .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
-body.dark .main .card .card-header .name {
-    color: var(--light-color);
+.app .container .card.left .name {
+    text-align: center;
+    margin: 10px auto;
+    color: var(--text-color-light);
 }
-.main .card .card-header .title {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--secondary-color);
+body.dark .app .container .card.left .name {
+    color: var(--text-color-dark);
 }
-body.dark .main .card .card-header .title {
-    color: var(--border-color);
+.app .container .card.left .title {
+    display: block;
+    font-size: 1em;
+    margin: 10px auto;
+    text-align: center;
+    color: var(--text-color-light-secondary);
 }
-/* body */
-.main .card .card-body {
-    padding: 20px;
-    padding-top: 10px;
+body.dark .app .container .card.left .title {
+    color: var(--text-color-dark-secondary);
 }
-.main .card .card-body .bio {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--secondary-color);
-    margin: 10px 0;
-}
-body.dark .main .card .card-body .bio {
-    color: var(--border-color);
-}
-.main .card .card-body .socials {
+.app .container .card.left .info {
     display: flex;
-    gap: 15px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    flex-flow: row wrap;
 }
-.main .card .card-body .socials .link {
-    padding: 6px;
-    font-size: 1.5em;
+.app .container .card.left .info .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 5px;
+    margin: 0;
+    margin: 10px auto;
+    width: 40px;
+    height: 40px;
+    background-color: var(--body-color-light);
     border-radius: var(--border-radius);
+    cursor: pointer;
+    position: relative;
 }
-.main .card .card-body .socials .link.x-twitter {
-    color: #181717;
+.app .container .card.right .contact .link {
+    position: relative;
 }
-.main .card .card-body .socials .link.github {
-    color: #181717;
+body.dark .app .container .card.left .info .link {
+    background-color: var(--body-color-dark);
 }
-.main .card .card-body .socials .link.discord {
-    color: #5f78d1;
+.app .container .card.right .contact .link span,
+.app .container .card.left .info .link span {
+    margin: 0;
+    color: var(--text-color-dark);
+    font-size: 1em;
+    display: none;
+    position: absolute;
+    background-color: var(--body-color-dark);
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 4px;
+    border-radius: 4px;
+    min-width: 100%;
+    text-align: center;
 }
-.main .card .card-body .socials .link.email {
-    color: #D44638;
+body.dark .app .container .card.right .contact .link span,
+body.dark .app .container .card.left .info .link span {
+    background-color: var(--body-color-light);
+    color: var(--text-color-light);
+}
+.app .container .card.left .info .link:hover span,
+.app .container .card.right .contact .link:hover span {
+    display: block;
+}
+.app .container .card .icon.x {
+    color: #000;
+}
+body.dark .app .container .card .icon.x {
+    color: #ffffff;
+}
+.app .container .card .icon.github {
+    color: #333;
+}
+body.dark .app .container .card .icon.github {
+    color: #dcdcdc;
+}
+.app .container .card .icon.discord {
+    color: #4c61aa;
+}
+body.dark .app .container .card .icon.discord {
+    color: #7986b5;
+}
+.app .container .card .icon.email {
+    color: #121c2b;
+}
+body.dark .app .container .card .icon.email {
+    color: #8a91ad;
 }
 
-body.dark .main .card .card-body .socials .link.x-twitter {
-    color: #000;
+
+
+
+
+
+.app .container .card {
+    background-color: var(--box-color-light) !important;
+    border: var(--border-light) !important;
 }
-body.dark .main .card .card-body .socials .link.github {
-    color: #000;
+
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-body.dark .main .card .card-body .socials .link.discord {
-    color: #6076c7;
+
+.app .container .content.right {
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
 }
-body.dark .main .card .card-body .socials .link.email {
-    color: #b24c42;
+.app .container .content.right .navigation {
+    /* background-color: var(--body-color-light); */
+    border-radius: var(--border-radius);
+}
+body.dark .app .container .content.right .navigation {
+    /* background-color: var(--body-color-dark); */
+}
+.app .container .content.right .navigation ul {
+    list-style: none;
+    margin: 0;
+}
+.app .container .content.right .navigation ul li {
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    color: var(--text-color-light);
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+}
+body.dark .app .container .content.right .navigation ul li {
+    color: var(--text-color-dark);
+}
+.app .container .content.right .navigation ul li.active,
+.app .container .content.right .navigation ul li:hover {
+    border: var(--border-light);
+}
+.app .container .content.right .navigation ul li .icon {
+    display: none;
+}
+.app .container .content.right .main-content {
+    /* background-color: var(--body-color-light); */
+    flex: 1;
+    padding: 10px;
+    border-radius: var(--border-radius);
+}
+body.dark .app .container .content.right .main-content {
+    /* background-color: var(--body-color-dark); */
+}
+.app .container .content.right .main-content .main-header .title {
+    font-size: 1.5em;
+    margin: 10px auto;
+    color: var(--text-color-light);
+}
+body.dark .app .container .content.right .main-content .main-header .title {
+    color: var(--text-color-dark);
+}
+.app .container .content.right .main-content .bio {
+    margin: 10px auto;
+    color: var(--text-color-light-secondary);
+}
+body.dark .app .container .content.right .main-content .bio {
+    color: var(--text-color-dark-secondary);
+}
+@media (max-width: 768px) {
+    .app .container .content.right .main-content .bio {
+        font-size: .85em;
+    }
+}
+.app .container .content.right .main-content .techs .title {
+    font-size: 1.2em;
+    margin: 10px auto;
+    color: var(--text-color-light);
+}
+body.dark .app .container .content.right .main-content .techs .title {
+    color: var(--text-color-dark);
+}
+.app .container .content.right .main-content .techs .list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+.app .container .content.right .main-content .techs .list img {
+    display: block;
+    height: 40px;
+    max-height: 40px;
+}
+.app .container .content.right .main-content .body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+.app .container .content.right .main-content .info {
+    color: var(--text-color-light-secondary);
+    margin: 10px auto;
+    
+}
+.app .container .content.right .main-content .body .box {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--box-color-light);
+    border: var(--border-light);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+body.dark .app .container .content.right .main-content .body .box {
+    background-color: var(--box-color-dark);
+    border: var(--border-dark);
+}
+.app .container .content.right .main-content .body .box .image {
+    width: 100%;
+    height: 100px;
+    background-color: var(--text-color-light);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.app .container .content.right .main-content .body .box .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+.app .container .content.right .main-content .body .box .name {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 15px auto;
+    color: var(--text-color-light);
+    text-align: center;
+}
+body.dark .app .container .content.right .main-content .body .box .name {
+    color: var(--text-color-dark);
+}
+.app .container .content.right .main-content .body .box .link {
+    display: block;
+    margin-top: 10px;
+    color: var(--box-color-light);
+    background-color: var(--main-color);
+    text-align: center;
+    padding: 6px;
+    border-radius: var(--border-radius);
+}
+.app .container .content.right .main-content .contact {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    gap: 15px;
+    margin: 20px auto;
+    margin-bottom: 25px;
+} 
+.app .container .content.right .main-content .contact .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--body-color-light);
+    border-radius: var(--border-radius);
+    font-size: 1.2em;
+}
+body.dark .app .container .content.right .main-content .contact .link {
+    background-color: var(--body-color-dark);
+}
+.app .container .content.right .main-content .contact-form form {
+    margin: 20px auto;
+}
+.app .container .content.right .main-content .contact-form form .form-group{
+    margin: 25px auto;
+    position: relative;
+}
+.app .container .content.right .main-content .contact-form form .form-group .lable {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background-color: var(--body-color-light);
+    font-size: .9em;
+    border-radius: var(--border-radius);
+    padding: 2px 4px;
+    color: var(--text-color-light-secondary);
+}
+body.dark .app .container .content.right .main-content .contact-form form .form-group .lable {
+    background-color: var(--body-color-dark);
+    color: var(--text-color-dark-secondary);
+}
+.app .container .content.right .main-content .contact-form form .form-group input:not(:placeholder-shown),
+.app .container .content.right .main-content .contact-form form .form-group textarea:not(:placeholder-shown) {
+    border-color: var(--main-color) !important;
+}
+.app .container .content.right .main-content .contact-form form .form-group .lable:hover,
+.app .container .content.right .main-content .contact-form form .form-group input:hover + .lable,
+.app .container .content.right .main-content .contact-form form .form-group input:focus + .lable,
+.app .container .content.right .main-content .contact-form form .form-group textarea:hover + .lable,
+.app .container .content.right .main-content .contact-form form .form-group textarea:focus + .lable,
+.app .container .content.right .main-content .contact-form form .form-group input:not(:placeholder-shown) + .lable,
+.app .container .content.right .main-content .contact-form form .form-group textarea:not(:placeholder-shown) + .lable {
+    top: -16px;
+    color: var(--text-color-light);
+    border: var(--border-light);
+    transform: translateY(0);
+}
+.app .container .content.right .main-content .contact-form form .form-group input:not(:placeholder-shown) + .lable,
+.app .container .content.right .main-content .contact-form form .form-group textarea:not(:placeholder-shown) + .lable {
+    border-color: var(--main-color) !important;
+}
+body.dark .app .container .content.right .main-content .contact-form form .form-group .lable:hover,
+body.dark .app .container .content.right .main-content .contact-form form .form-group input:hover + .lable,
+body.dark .app .container .content.right .main-content .contact-form form .form-group input:focus + .lable,
+body.dark .app .container .content.right .main-content .contact-form form .form-group textarea:hover + .lable,
+body.dark .app .container .content.right .main-content .contact-form form .form-group textarea:focus + .lable,
+body.dark .app .container .content.right .main-content .contact-form form .form-group input:not(:placeholder-shown) + .lable,
+body.dark .app .container .content.right .main-content .contact-form form .form-group textarea:not(:placeholder-shown) + .lable {
+    color: var(--text-color-dark);
+    border: var(--border-dark);
+}
+.app .container .content.right .main-content .contact-form form .form-group input,
+.app .container .content.right .main-content .contact-form form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: var(--border-light);
+    background-color: var(--body-color-light);
+    color: var(--text-color-light);
+    max-width: 400px;
+    outline: none;
+    font-weight: bold;
+}
+body.dark .app .container .content.right .main-content .contact-form form .form-group input,
+body.dark .app .container .content.right .main-content .contact-form form .form-group textarea {
+    background-color: var(--body-color-dark);
+    color: var(--text-color-dark);
+    border: var(--border-dark);
+}
+.app .container .content.right .main-content .contact-form form .form-group textarea {
+    height: 120px;
+    resize: none;
+}
+.app .container .content.right .main-content .contact-form form .action button {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    cursor: not-allowed;
+    outline: none;
+    border: var(--border-light);
+    color: var(--text-color-dark);
+    background-color: var(--main-color);
+    font-size: 1.1em;
+    font-weight: bold;
+    opacity: .3;
+}
+body.dark .app .container .content.right .main-content .contact-form form .action button {
+    background-color: var(--main-color);
+    color: var(--text-color-light);
+    border: var(--border-dark);
+}
+.app .container .content.right .main-content .contact-form .warning {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid #bee5eb;
+    font-size: 1em;
+    margin-top: 25px;
+}
+@media (max-width: 768px) {
+    .app .container .content.right .main-content .contact-form .warning {
+        font-size: .8em;
+    }
+}
+body.dark .app .container .content.right .main-content .contact-form .warning {
+    background-color: #0c5460;
+    color: #d1ecf1;
+    border: 1px solid #769498;
+}
+.app .container .content.right .main-content .contact-form .warning .icon {
+    font-size: 1.2em;
+}
+
+
+
+
+.app .container .content.right .main-content .body {
+    display: block;
+}
+.app .container .content.right .main-content .body .no-projects {
+    text-align: center;
+    width: 100%;
+}
+.app .container .content.right .main-content .no-projects p {
+    font-size: 1.2em;
+    margin: 10px auto;
+    color: var(--text-color-light);
+}
+body.dark .app .container .content.right .main-content .no-projects p {
+    color: var(--text-color-dark);
+}
+.app .container .content.right .main-content .no-projects .icon {
+    font-size: 5em;
+    color: var(--main-color);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .app .container {
+        grid-template-columns: 1fr;
+    }
+    .app .container .content.right {
+        flex-flow: column nowrap;
+    }
+    .app .container .content.right .navigation ul {
+        display: flex;
+        gap: 10px;
+    }
+    .app .container .content.right .navigation li {
+        width: calc(100% / 3);
+    }
+    .app .container .content.right .main-content .body {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .app .container .content.right .main-content .info {
+        font-size: .9em;
+    }
+    .app .container .content.right .main-content .no-projects p {
+        font-size: 1em;
+    }
 }
