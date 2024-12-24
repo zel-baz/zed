@@ -124,19 +124,17 @@ let contactContent = `
 
 
 
-navLinks[0].addEventListener("click", ()=>{
-    mainContent.innerHTML = aboutContent;
-    navLinks.forEach((l) => l.classList.remove("active"));
-    navLinks[0].classList.add("active");
-})
-navLinks[1].addEventListener("click", ()=>{
-    mainContent.innerHTML = projectsContent;
-    navLinks.forEach((l) => l.classList.remove("active"));
-    navLinks[1].classList.add("active");
-})
-navLinks[2].addEventListener("click", ()=>{
-    mainContent.innerHTML = contactContent;
-    navLinks.forEach((l) => l.classList.remove("active"));
-    navLinks[2].classList.add("active");
-})
+const contentMap = {
+    0: aboutContent,
+    1: projectsContent,
+    2: contactContent
+};
+
+navLinks.forEach((link, index) => {
+    link.addEventListener("click", () => {
+        mainContent.innerHTML = contentMap[index];
+        navLinks.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
 
