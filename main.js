@@ -79,7 +79,7 @@ let contactContent = `
         <h1 class="title">Contact</h1>
     </header>
                     <p class="info">Feel free to reach out to me through any of the platforms listed on the left. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                    <div style="border:1px solid red" class="contact">
+                    <div class="contact">
                         <a href="https://x.com/zohir_e" class="link">
                         <i class="x icon fab fa-x-twitter"></i>
                         </a>
